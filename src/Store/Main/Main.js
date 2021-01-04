@@ -9,11 +9,13 @@ export default function Main(){
     const dispatch = useDispatch()
     const item= useSelector(({item})=>[...item])
 
+    const fetchData = () =>{
+        fetch(`https://fakestoreapi.com/products`).then(value => value.json().then(value=>dispatch({type:'SET_ITEM',payload:value})))
+    }
+
     useEffect(()=>{
-        fetch(`https://fakestoreapi.com/products`).then(value => value.json().then(value=>dispatch({type:'SET_ITEM',payload:[...value]})))
+        fetchData()
     },[])
-
-
 
      return (
          <div className={'Main-Wrap'}>

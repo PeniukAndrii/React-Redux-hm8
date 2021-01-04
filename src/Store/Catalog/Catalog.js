@@ -16,8 +16,12 @@ export default function Catalog(value){
                  {value.value.title}
              </div>
              <div className={'Like-Add'}>
-                 <div className={'Like'}><img src={'https://icons8.com/iconizer/files/Retina_Display_Icons/orig/favorites_add.png'} alt={'like'}/></div>
-                 <div className={'Like'} onClick={()=>dispatch({type:'ITEM_ADD',payload:value.value.price})}><img src={'https://icons8.com/iconizer/files/Bimbilini/orig/shopping_cart_add.png'} alt={'like'}/></div>
+                 <div className={'Like'} onClick={()=>dispatch({type:'ITEM_ADD',payload:value.value})}>
+                     <img src={'https://icons8.com/iconizer/files/Retina_Display_Icons/orig/favorites_add.png'} alt={'like'}/>
+                 </div>
+                 <div className={'Like'} onClick={()=>dispatch({type:'ITEM_CART_ADD',payload:value.value})}>
+                     <img src={'https://icons8.com/iconizer/files/Bimbilini/orig/shopping_cart_add.png'} alt={'like'}/>
+                 </div>
              </div>
          </div>
      );
