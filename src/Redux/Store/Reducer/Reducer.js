@@ -1,6 +1,7 @@
 const initialState= {
     item:[],
     chose:[],
+    cartItem:[],
     cart:[]
 }
 
@@ -17,13 +18,15 @@ export const reducer = (state=initialState,action)=>{
             }
             return {...state, chose: updChose}
         case 'ITEM_CART_ADD':
-            const updCart = state.cart.filter((el)=>el.id !== action.payload.id)
-            const price = updCart.reduce((acc,value)=>acc+value)
-            if(price.length === state.cart.length){
-                price.push(action.payload)
+            const updCart = state.cartItem.filter((el)=> el !== action.payload.price)
+            if(updCart.length===state.cartItem.length){
+                updCart.push(action.payload.price)
             }
+            console.log(updCart)
+            const sum = updCart.reduce((acc,el)=>(acc+=el),0)
+            console.log(sum)
 
-            return {...state, cart: price}
+            return {...state, cartItem: updCart, cart:[sum]}
         default:
             return state
     }

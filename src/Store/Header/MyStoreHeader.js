@@ -7,8 +7,8 @@ export default function MyStoreHeader() {
     const [state,setState] = useState(false);
     const [carts,setCart] = useState(false);
 
-    const chose = useSelector(({chose})=>[...chose])
-    const cart= useSelector(({cart})=>[...cart])
+    const chose = useSelector(({chose})=>chose)
+    const cart= useSelector(({cart})=>cart)
     return (
             <div>
                 <div className={'Header'}>
@@ -26,18 +26,12 @@ export default function MyStoreHeader() {
                 </div>
                 <div className={`${state}-Menu`}>
                     <div className={'Menu-inside-wrap'}>
-                        <div className={'Menu-Id'}>Count-{chose.length}</div>
-                         {
-                             chose.map(value=><div className={'Menu-Id'} key={value.id}>ID:{value.id}</div>)
-                         }
+                        <div className={'Menu-Id'}>{chose.length}</div>
                     </div>
                 </div>
                 <div className={`${carts}-Menu`}>
                     <div className={'Menu-inside-wrap'}>
-                        <div className={'Menu-Id'}>Count-{cart.length}</div>
-                        {
-                            cart.map(value=><div className={'Menu-Id'} key={value.id}>ID:{value.id}</div>)
-                        }
+                        <div className={'Menu-Id'}>{cart}</div>
                     </div>
                 </div>
 
